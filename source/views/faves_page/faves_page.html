@@ -1,0 +1,34 @@
+<div class="wrapper">
+	<div class="page-title">
+		<div class="home-holder fill"><span class="home">Home</span></div>
+	</div>
+	<div class="heading">
+		<h1>Here is List of Favorites</h1>
+	</div>
+	<div class="container">
+		<ul class="item-list">
+			{{# _(model).each(function(item, index) { }}
+			<li data-index="{{= index }}">
+				<div class="alignleft">
+					<img src="{{= item.image }}" width="100%" height="auto">
+				</div>
+				<div class="text-holder">
+					<span class="price">{{= item.price }}</span>
+					<p class="desc">{{= item.description }}</p>
+				</div>
+			</li>
+			{{# }) }}
+		</ul>
+		{{# if (+this.model.total_results > +this.model.num_res) { }}
+		<div class="more-area">
+			<span class="btn-more" id="more">Load more …</span>
+			<span>Results for "{{= this.model.city }}", showing {{= model.length }} of {{= this.model.total_results }} properties </span>
+		</div>
+
+		{{# } }}
+		<div class="more-area error-area">
+			<span>Sorry, shit happens. Please, try again</span>
+			<span class="btn-more">One more time...</span>
+		</div>
+	</div>
+</div>
