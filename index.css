@@ -75,8 +75,8 @@ table {
 	border-spacing: 0;
 }
 .wrapper{
-	max-width: 960px;
 	margin: 0 auto;
+	height: 100%;
 }
 .heading{
 	background: white;
@@ -103,14 +103,24 @@ table {
 	border-radius: 6px;
 }
 .heading .back-link{
-	float: left;
+	right: auto;
+	left: 10px;
 }
 .heading .btn-link:hover{
 	background: royalblue;
 	text-decoration: none;
 }
 .container{
-	padding: 0 2%;
+	padding:0 2%;
+	z-index: 1;
+}
+.container-holder{
+	position: absolute;
+	top: 130px;
+	bottom: 0;
+	left: 0;
+	z-index: 10;
+	width: 100%;
 }
 .text{
 	margin: 0 0 20px;
@@ -168,20 +178,27 @@ table {
 	margin: 0 0 10px;
 	font-style: italic;
 }
-.searches-list{
+.locations-block{
+	display: none;
+}
+.searches-list,
+.locations-list{
 	margin: 0 0 18px;
 	font-weight: bold;
 }
-.searches-list li{
+.searches-list li,
+.locations-list li{
 	padding: 0 0 5px;
 }
-.searches-list a{
+.searches-list div,
+.locations-list div{
 	display: block;
 	padding: 7px 2%;
 	background: lightgray;
 	color: #000;
 }
-.searches-list a:hover{
+.searches-list div:hover,
+.locations-list div:hover{
 	text-decoration: none;
 	background: white;
 }
@@ -233,6 +250,7 @@ table {
 	width: 100%;
 	background: lightgray;
 	margin: 0 0 10px;
+	position: relative;
 }
 .item-list li:hover{
 	text-decoration: none;
@@ -311,6 +329,7 @@ table {
 	padding: 10px 1%;
 	border-radius: 10px;
 	text-align: center;
+	box-sizing: border-box;
 }
 .popup-holder .heading{
 	background: none;
@@ -425,4 +444,9 @@ table {
 }
 .fill{
 	width: 100%;
+}
+.sorry-text{
+	text-align: center;
+	font-size: 18px;
+	line-height: 20px;
 }

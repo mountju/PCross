@@ -1,27 +1,18 @@
-RAD.view("view.faves_page", RAD.Blanks.View.extend({
+RAD.view("view.faves_page", RAD.Blanks.ScrollableView.extend({
 	url: 'source/views/faves_page/faves_page.html',
 	events: {
-		'tap .home-holder': 'goBack',
+		'tap .home-holder': 'goHome',
 		'tap .item-list li': 'showDetails'
 	},
+
 	model: RAD.model('favesList'),
 
-	onInitialize: function(){
-		'use strict';
-		this.model.loadFromStorage();
-	},
-//
-//	load: function(){
-//		'use strict';
-//		this.model.loadFromStorage();
-//		console.log('to sho nado');
-//	},
-
-    goBack: function (){
+    goHome: function (){
         "use strict";
         var options = {
                 container_id: '#screen',
-                content: "view.home_page"
+                content: "view.home_page",
+	            animation: 'slide-out'
             };
         this.publish('navigation.show', options);
     },
@@ -36,16 +27,21 @@ RAD.view("view.faves_page", RAD.Blanks.View.extend({
 //
 	showDetails: function(e){
 		// TODO get model from collection
-		var num = $(e.currentTarget).attr('data-index');
-//		RAD.model('itemDetail').set(this.model.at(num).toJSON());
-		var options = {
-			container_id: '#screen',
-			content: "view.detail_page",
-			extras : {
-				targetModel: this.model.at(num)
-			}
-		};
-		this.publish('navigation.show', options);
+		if ($(e.currentTarget).attr('data-index')) {
+			var num = $(e.currentTarget).attr('data-index');
+			var options = {
+				container_id: '#screen',
+				content: "view.detail_page",
+				extras : {
+					targetModel: this.model.at(num)
+				}
+			};
+			this.publish('navigation.show', options);
+		} else {
+			alert('lets try again!');
+		}
+		console.log(RAD.model('favesList'));
+
 	}
 
 

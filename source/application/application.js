@@ -29,6 +29,6 @@ RAD.application(function (core) {
 		core.publish('navigation.popup.show', options);
 	};
 
-    return app;
+	return app;
 }, true);
 

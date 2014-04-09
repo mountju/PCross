@@ -1,18 +1,20 @@
-RAD.view("view.results_page", RAD.Blanks.View.extend({
+RAD.view("view.results_page", RAD.Blanks.ScrollableView.extend({
     url: 'source/views/results_page/results_page.html',
     events: {
-        'tap .home-holder': 'goBack',
+        'tap .home-holder': 'goHome',
 	    'tap #more': 'showMore',
 	    'tap .item-list li': 'showDetails',
 	    'tap .star-holder': 'goToFaves'
     },
+
 	model: RAD.model('itemsList'),
 
-    goBack: function (){
+    goHome: function (){
         "use strict";
         var options = {
                 container_id: '#screen',
-                content: "view.home_page"
+                content: "view.home_page",
+	            animation: 'slide-out'
             };
 
         this.publish('navigation.show', options);
@@ -36,8 +38,8 @@ RAD.view("view.results_page", RAD.Blanks.View.extend({
 	},
 
 	showDetails: function(e){
+		"use strict";
 		var num = $(e.currentTarget).attr('data-index');
-//		RAD.model('itemDetail').set(this.model.at(num).toJSON());
 		var options = {
 			container_id: '#screen',
 			content: "view.detail_page",
