@@ -1,0 +1,45 @@
+<div class="wrapper">
+	<div class="page-title">
+		<div class="star-holder fill"><span class="star">Fave</span></div>
+	</div>
+	<div class="heading">
+		<h1>Property Cross</h1>
+	</div>
+	<div class="container">
+		<div class="container-holder scroll-view">
+			<div data-template>
+				<p>Use the form below to search for houses to buy. You can search by place-name, postcode, or click 'My location', to search in your current location!</p>
+				<form class="form-block" action="#">
+					<input type="text" placeholder="my location" class="text" id="city">
+					<div class="btn-row">
+						<input type="search" class="btn-search" id="search" value="GO!">
+						<input type="button" class="btn-location" value="Location" id="locations">
+					</div>
+					<div class="search-block">
+						{{# if (this.requestsCollection && this.requestsCollection.length) { }}
+						<label>Recent searches:</label>
+						<ul class="searches-list">
+							{{# console.log(this.requestsCollection, 'city request') }}
+							{{# _.each(this.requestsCollection.toJSON(), function(item) { }}
+							{{# console.log(item.city) }}
+							<li><div class="city-item" data-index="{{= item.city  }}"><span class="search-num">{{= item.date }}, ( {{= item.results }} )</span><span class="search-text">{{= item.city }}</span></div></li>
+							{{# }), this }}
+						</ul>
+						{{# } else {''}  }}
+					</div>
+					<div class="locations-block">
+						{{# if (this.locationsCollection && this.locationsCollection.length) { }}
+						{{# console.log(this.locationsCollection) }}
+						<label>Please select a location below:</label>
+						<ul class="locations-list">
+							{{# _.each(this.locationsCollection.toJSON(), function(item) { }}
+							<li><div class="location-item" data-index="{{= item.location }}"><span class="search-text">{{= item.location }}</span></div></li>
+							{{# }), this }}
+						</ul>
+						{{# } else {''}  }}
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,26 @@
+<div class="wrapper">
+	<div class="page-title">
+		<div class="home-holder"><span class="home">Home</span></div>
+		<div class="star-holder"><span class="star">Fave</span></div>
+	</div>
+	<div class="heading">
+		<span class="btn-link back-link" id="goBack">BACK</span>
+		{{= (model.favesMarked ? '<span class="btn-link" id="deleteFromFaves">DELETE FROM FAVES</span>' : '<span class="btn-link" id="addToFaves">ADD TO FAVES</span>') }}
+		<h1>Property Details</h1>
+	</div>
+	<div class="container">
+		<div class="container-holder scroll-view">
+			<div data-template>
+				<h2>{{= model.price }}</h2>
+				<div class="item-title">{{= model.title }}</div>
+				<div class="item-img">
+					<img src="{{= model.image }}" alt=""/>
+				</div>
+				<div class="item-info">
+					<span class="rooms-num">{{= model.bedroomNum }} bedrooms, {{= model.bathroomNum }} bathrooms</span>
+					<p>{{= model.description }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

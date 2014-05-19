@@ -1,0 +1,41 @@
+<div class="wrapper">
+	<div class="page-title">
+		<div class="home-holder fill"><span class="home">Home</span></div>
+	</div>
+	<div class="heading">
+		<h1>Here is List of Favorites</h1>
+	</div>
+	<div class="container">
+		<div class="container-holder scroll-view">
+			<div data-template>
+				{{# if (+this.model.length) { }}
+				<ul class="item-list">
+					{{# _(model).each(function(item, index) { }}
+					<li data-index="{{= index }}" class="{{= (item.favesMarked ? 'marked' : '') }}">
+						<div class="alignleft">
+							<img src="{{= item.image }}" width="100%" height="auto">
+						</div>
+						<div class="text-holder">
+							<span class="price">{{= item.price }}</span>
+							<p class="desc">{{= item.description }}</p>
+						</div>
+					</li>
+					{{# }) }}
+				</ul>
+				{{# } else { }}
+				<p class="sorry-text">We're really sorry, but you haven't any favourites</p>
+				{{# } }}
+				<!--{{# if (+this.model.length > 20) { }}-->
+				<!--<div class="more-area">-->
+				<!--<strong class="btn-more" id="more">Load more …</strong>-->
+				<!--</div>-->
+				<!--{{# } }}-->
+				<!--<div class="more-area error-area">-->
+				<!--<span>Sorry, shit happens. Please, try again</span>-->
+				<!--<span class="btn-more">One more time...</span>-->
+				<!--</div>-->
+			</div>
+		</div>
+
+	</div>
+</div>
